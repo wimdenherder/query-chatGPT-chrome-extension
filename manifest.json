@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Query ChatGPT",
+  "version": "1.0",
+  "description": "Creates menu for selected text to query ChatGPT",
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": [
+        "https://chat.openai.com/chat*",
+        "https://www.chat.openai.com/chat*"
+      ]
+    }
+  ],
+  "permissions": [
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
