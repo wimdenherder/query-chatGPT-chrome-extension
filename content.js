@@ -16,13 +16,21 @@ function query(text) {
   }
 }
 
-function onload() {
-  let timeout = 500;
+async function onload() {
+  let timeout = 0;
   const noMachineCheck = document.querySelector("#cf-stage > div.ctp-checkbox-container > label > span");
   if(noMachineCheck) {
     noMachineCheck.click();
-    timeout = 1000;
+    timeout = 500;
   }
+
+  await (async () => new Promise((x) => setTimeout(x, 500)))()
+
+  document.querySelector("#headlessui-listbox-button-\\:r0\\:")?.click();
+
+  await (async () => new Promise((x) => setTimeout(x, 100)))()
+
+  document.querySelector("#headlessui-listbox-button-\\:r0\\:")?.parentNode.querySelector("ul>li:nth-of-type(2)")?.click();
 
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
